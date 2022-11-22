@@ -1,0 +1,28 @@
+class Sport{
+    String getName(){
+        return "Generic Sport";
+    }
+    void getNumberOfTeamMembers(){
+        System.out.println("Each team has n players in "+getName());
+    }
+}
+
+class Soccer extends Sport{
+    @Override
+    String getName() {
+        return "Soccer Game";
+    }
+    void getNumberOfTeamMembers(){
+        System.out.println("Each team has 11 players in Soccer");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Sport a = new Sport();
+        System.out.println(a.getName());
+        a.getNumberOfTeamMembers();
+        Soccer s = new Soccer();
+        System.out.println(s.getName());
+        s.getNumberOfTeamMembers();
+    }
+}
