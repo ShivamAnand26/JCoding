@@ -1,18 +1,28 @@
-class Animal{
-    void walk(){
-        System.out.println("I am walking");
-    }
+import java.util.Scanner;
+
+interface Arithmetic{
+    public int divisor_sum(int n);
 }
 
-class Bird extends Animal{
-    void fly(){
-        System.out.println("I am flying");
+class MyCalculator implements Arithmetic{
+    public int divisor_sum(int n){
+        if(n<=1){ return n;}
+
+        int sum = n+1;
+        for(int i=2; i<n; i++){
+            if(n%i == 0){
+                sum +=i;
+            }
+        }
+        return sum;
     }
+
 }
 public class Main {
     public static void main(String[] args) {
-        Bird b = new Bird();
-        b.walk();
-        b.fly();
+        MyCalculator mycalculator = new MyCalculator();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(mycalculator.divisor_sum(n));
     }
 }
