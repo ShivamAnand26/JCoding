@@ -1,0 +1,75 @@
+import java.util.*;
+
+class Student implements Comparator<Student> {
+    private int id;
+    private String fname;
+    private double cgpa;
+
+    public Student(int id, String fname, double cgpa){
+        super();
+        this.id=id;
+        this.fname=fname;
+        this.cgpa=cgpa;
+    }
+
+    public Student() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+    public String getfname(){
+        return fname;
+    }
+    public double getCgpa(){
+        return cgpa;
+    }
+
+    public int compare(Student a, Student b){
+        if(a.cgpa > b.getCgpa()){
+            return 1;
+        } else if (a.getCgpa()< b.getCgpa()){
+            return -1;
+        }
+        else{
+            if(a.getfname().compareTo(b.getfname())>0){
+                return 1;
+            }
+            else if (a.getfname().compareTo(b.getfname())<0){
+                return -1;
+            }
+            else {
+                if(a.getId()>b.getId()){
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Student> studentlist = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t>0){
+            int id = sc.nextInt();
+            String fname = sc.next();
+            double cgpa = sc.nextDouble();
+
+            Student st = new Student(id,fname, cgpa);
+            studentlist.add(st);
+
+            t--;
+
+        }
+
+        Collections.sort(studentlist, new Student());
+        for (Student st: studentlist){
+            System.out.println(st.getfname());
+        }
+    }
+}
